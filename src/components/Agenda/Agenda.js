@@ -1,4 +1,5 @@
 import React from 'react';
+import { format } from 'date-fns';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import { Card } from 'react-native-paper';
@@ -7,6 +8,7 @@ const timeToString = (time) => {
     const date = new Date(time);
     return date.toISOString().split('T')[0];
 }
+
 
 const Apptest = () => {
     const [items, setItems] = React.useState({});
@@ -24,7 +26,7 @@ const Apptest = () => {
                     const numItems = Math.floor(Math.random() * 3 + 1);
                     for (let j = 0; j < numItems; j++) {
                         items[strTime].push({
-                            name: 'Item for ' + strTime + ' #' + j,
+                            name: 'Reserva do dia ' + strTime,
                             height: Math.max(10, Math.floor(Math.random() * 150)),
                             day: strTime
                         });
@@ -58,7 +60,6 @@ const Apptest = () => {
             <Agenda
                 items={items}
                 loadItemsForMonth={loadItems}
-                selected={'2022-07-07'}
                 refreshControl={null}
                 showClosingKnob={true}
                 refreshing={false}
